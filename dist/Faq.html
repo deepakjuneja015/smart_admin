@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<!-- 
+Template Name:  SmartAdmin Responsive WebApp - Template build with Twitter Bootstrap 4
+Version: 4.5.1
+Author: Sunnyat A.
+Website: http://gootbootstrap.com
+Purchase: https://wrapbootstrap.com/theme/smartadmin-responsive-webapp-WB0573SK0?ref=myorange
+License: You must have a valid license purchased only from wrapbootstrap.com (link above) in order to legally use this theme for your project.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title> Analytics Dashboard - Application Intel - SmartAdmin v4.5.1 </title>
+<meta name="description" content="Analytics Dashboard">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+<!-- Call App Mode on ios devices -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!-- Remove Tap Highlight on Windows Phone IE -->
+<meta name="msapplication-tap-highlight" content="no">
+<!-- base css -->
+<link id="vendorsbundle" rel="stylesheet" media="screen, print" href="css/vendors.bundle.css">
+<link id="appbundle" rel="stylesheet" media="screen, print" href="css/app.bundle.css">
+<link id="mytheme" rel="stylesheet" media="screen, print" href="#">
+<link id="myskin" rel="stylesheet" media="screen, print" href="css/skins/skin-master.css">
+<!-- Place favicon.ico in the root directory -->
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.indmoney.com/favicon.ico">
+<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="stylesheet" media="screen, print" href="css/miscellaneous/reactions/reactions.css">
+<link rel="stylesheet" media="screen, print" href="css/miscellaneous/fullcalendar/fullcalendar.bundle.css">
+<link rel="stylesheet" media="screen, print" href="css/miscellaneous/jqvmap/jqvmap.bundle.css">
+<link rel="stylesheet" media="screen, print" href="css/statistics/chartist/chartist.css">
+</head>
+<!-- BEGIN Body -->
+<!-- Possible Classes
+
+		* 'header-function-fixed'         - header is in a fixed at all times
+		* 'nav-function-fixed'            - left panel is fixed
+		* 'nav-function-minify'			  - skew nav to maximize space
+		* 'nav-function-hidden'           - roll mouse on edge to reveal
+		* 'nav-function-top'              - relocate left pane to top
+		* 'mod-main-boxed'                - encapsulates to a container
+		* 'nav-mobile-push'               - content pushed on menu reveal
+		* 'nav-mobile-no-overlay'         - removes mesh on menu reveal
+		* 'nav-mobile-slide-out'          - content overlaps menu
+		* 'mod-bigger-font'               - content fonts are bigger for readability
+		* 'mod-high-contrast'             - 4.5:1 text contrast ratio
+		* 'mod-color-blind'               - color vision deficiency
+		* 'mod-pace-custom'               - preloader will be inside content
+		* 'mod-clean-page-bg'             - adds more whitespace
+		* 'mod-hide-nav-icons'            - invisible navigation icons
+		* 'mod-disable-animation'         - disables css based animations
+		* 'mod-hide-info-card'            - hides info card from left panel
+		* 'mod-lean-subheader'            - distinguished page header
+		* 'mod-nav-link'                  - clear breakdown of nav links
+
+		>>> more settings are described inside documentation page >>>
+	-->
+<body class="mod-bg-1 mod-nav-link ">
+<!-- DOC: script to save and load page settings --> 
+<script>
+            /**
+             *	This script should be placed right after the body tag for fast execution 
+             *	Note: the script is written in pure javascript and does not depend on thirdparty library
+             **/
+            'use strict';
+
+            var classHolder = document.getElementsByTagName("BODY")[0],
+                /** 
+                 * Load from localstorage
+                 **/
+                themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :
+                {},
+                themeURL = themeSettings.themeURL || '',
+                themeOptions = themeSettings.themeOptions || '';
+            /** 
+             * Load theme options
+             **/
+            if (themeSettings.themeOptions)
+            {
+                classHolder.className = themeSettings.themeOptions;
+                console.log("%c✔ Theme settings loaded", "color: #148f32");
+            }
+            else
+            {
+                console.log("%c✔ Heads up! Theme settings is empty or does not exist, loading default settings...", "color: #ed1c24");
+            }
+            if (themeSettings.themeURL && !document.getElementById('mytheme'))
+            {
+                var cssfile = document.createElement('link');
+                cssfile.id = 'mytheme';
+                cssfile.rel = 'stylesheet';
+                cssfile.href = themeURL;
+                document.getElementsByTagName('head')[0].appendChild(cssfile);
+
+            }
+            else if (themeSettings.themeURL && document.getElementById('mytheme'))
+            {
+                document.getElementById('mytheme').href = themeSettings.themeURL;
+            }
+            /** 
+             * Save to localstorage 
+             **/
+            var saveSettings = function()
+            {
+                themeSettings.themeOptions = String(classHolder.className).split(/[^\w-]+/).filter(function(item)
+                {
+                    return /^(nav|header|footer|mod|display)-/i.test(item);
+                }).join(' ');
+                if (document.getElementById('mytheme'))
+                {
+                    themeSettings.themeURL = document.getElementById('mytheme').getAttribute("href");
+                };
+                localStorage.setItem('themeSettings', JSON.stringify(themeSettings));
+            }
+            /** 
+             * Reset settings
+             **/
+            var resetSettings = function()
+            {
+                localStorage.setItem("themeSettings", "");
+            }
+
+        </script> 
+<!-- BEGIN Page Wrapper -->
+<div class="page-wrapper">
+  <div class="page-inner"> 
+    <!-- BEGIN Left Aside -->
+    <aside class="page-sidebar"> 
+      
+      <!-- BEGIN PRIMARY NAVIGATION -->
+      <nav id="js-primary-nav" class="primary-nav" role="navigation">
+        <div class="info-card"> <img src="https://cdn.indiawealth.in/public/ind-marketing/affiliatelogo.png" class="profile-image" alt="Dr. Codex Lantern"> </div>
+        <ul id="js-nav-menu" class="nav-menu">
+          <li> <a href="Index.html" title="Application Intel" data-filter-tags="application intel"> <i class="fal fa-home"></i> <span class="nav-link-text" data-i18n="nav.application_intel">Home</span> </a> </li>
+          <li> <a href="#" title="Theme Settings" data-filter-tags="theme settings"> <i class="fal fa-coins"></i> <span class="nav-link-text" data-i18n="nav.theme_settings">Earnings </span> </a>
+            <ul>
+              <li> <a href="settings_how_it_works.html" title="How it works" data-filter-tags="theme settings how it works"> <span class="nav-link-text" data-i18n="nav.theme_settings_how_it_works">Total Earnings </span> </a> </li>
+              <li> <a href="settings_layout_options.html" title="Layout Options" data-filter-tags="theme settings layout options"> <span class="nav-link-text" data-i18n="nav.theme_settings_layout_options">My Customers</span> </a> </li>
+            </ul>
+          </li>
+          <li> <a href="#" title="Documentation" data-filter-tags="documentation"> <i class="fal fa-book"></i> <span class="nav-link-text" data-i18n="nav.documentation">Marketing Material</span> </a>
+            <ul>
+              <li> <a href="docs_general.html" title="General Docs" data-filter-tags="documentation general docs"> <span class="nav-link-text" data-i18n="nav.documentation_general_docs">Product Creatives</span> </a> </li>
+              <li> <a href="docs_project_structure.html" title="Project Structure" data-filter-tags="documentation project structure"> <span class="nav-link-text" data-i18n="nav.documentation_project_structure">Product Features</span> </a> </li>
+            </ul>
+          </li>
+          <li class="open"> <a href="#" title="Application Intel" data-filter-tags="application intel"> <i class="fal fa-file-invoice"></i> <span class="nav-link-text" data-i18n="nav.application_intel">Invoice</span> </a> </li>
+          <li class="open"> <a href="#" title="Application Intel" data-filter-tags="application intel"> <i class="fal fa-user"></i> <span class="nav-link-text" data-i18n="nav.application_intel">My Profile</span> </a> </li>
+          <li  class="active open"> <a href="#" title="Application Intel" data-filter-tags="application intel"> <i class="fal fa-question-circle"></i>FAQs</a> </li>
+          <li class="open"> <a href="#" title="Application Intel" data-filter-tags="application intel"> <i class="fal fa-address-book"></i>Contact Us</a> </li>
+          <li class="open"> <a href="About-us.html" title="Application Intel" data-filter-tags="application intel"> <i class="fal fa-info-circle"></i>About INDmoney</a> </li>
+        </ul>
+        <div class="filter-message js-filter-message bg-success-600"></div>
+      </nav>
+      <!-- END PRIMARY NAVIGATION --> 
+      <!-- NAV FOOTER --> 
+      
+      <!-- END NAV FOOTER --> 
+    </aside>
+    <!-- END Left Aside -->
+    <div class="page-content-wrapper"> 
+      <!-- BEGIN Page Header -->
+      <header class="page-header" role="banner"> 
+        <!-- we need this logo when user switches to nav-function-top -->
+        <div class="page-logo"> <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative" data-toggle="modal" data-target="#modal-shortcut"> <img src="img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo"> <span class="page-logo-text mr-1">SmartAdmin WebApp</span> <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span> <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i> </a> </div>
+        <!-- DOC: nav menu layout change shortcut -->
+        <div class="hidden-md-down dropdown-icon-menu position-relative"> <a href="#" class="header-btn btn js-waves-off" data-action="toggle" data-class="nav-function-hidden" title="Hide Navigation"> <i class="ni ni-menu"></i> </a>
+          <ul>
+            <li> <a href="#" class="btn js-waves-off" data-action="toggle" data-class="nav-function-minify" title="Minify Navigation"> <i class="ni ni-minify-nav"></i> </a> </li>
+            <li> <a href="#" class="btn js-waves-off" data-action="toggle" data-class="nav-function-fixed" title="Lock Navigation"> <i class="ni ni-lock-nav"></i> </a> </li>
+          </ul>
+        </div>
+        <!-- DOC: mobile button appears during mobile width -->
+        <div class="hidden-lg-up"> <a href="#" class="header-btn btn press-scale-down" data-action="toggle" data-class="mobile-nav-on"> <i class="ni ni-menu"></i> </a> </div>
+        <div class="search">
+          <form class="app-forms hidden-xs-down" role="search" action="page_search.html" autocomplete="off">
+            <input type="text" id="search-field" placeholder="Search for anything" class="form-control" tabindex="1">
+            <a href="#" onclick="return false;" class="btn-danger btn-search-close js-waves-off d-none" data-action="toggle" data-class="mobile-search-on"> <i class="fal fa-times"></i> </a>
+          </form>
+        </div>
+        <div class="ml-auto d-flex"> 
+          <!-- activate app search icon (mobile) -->
+          <div class="hidden-sm-up"> <a href="#" class="header-icon" data-action="toggle" data-class="mobile-search-on" data-focus="search-field" title="Search"> <i class="fal fa-search"></i> </a> </div>
+          <!-- app settings --> 
+          
+          <!-- app shortcuts --> 
+          
+          <!-- app message --> 
+          
+          <!-- app notification -->
+          <div> <a href="#" class="header-icon" data-toggle="dropdown" title="You got 11 notifications"> <i class="fal fa-bell"></i> <span class="badge badge-icon">11</span> </a>
+            <div class="dropdown-menu dropdown-menu-animated dropdown-xl">
+              <div class="dropdown-header bg-trans-gradient d-flex justify-content-center align-items-center rounded-top mb-2">
+                <h4 class="m-0 text-center color-white"> 11 New <small class="mb-0 opacity-80">User Notifications</small> </h4>
+              </div>
+              <ul class="nav nav-tabs nav-tabs-clean" role="tablist">
+                <li class="nav-item"> <a class="nav-link px-4 fs-md js-waves-on fw-500" data-toggle="tab" href="#tab-messages" data-i18n="drpdwn.messages">Messages</a> </li>
+                <li class="nav-item"> <a class="nav-link px-4 fs-md js-waves-on fw-500" data-toggle="tab" href="#tab-feeds" data-i18n="drpdwn.feeds">Feeds</a> </li>
+                <li class="nav-item"> <a class="nav-link px-4 fs-md js-waves-on fw-500" data-toggle="tab" href="#tab-events" data-i18n="drpdwn.events">Events</a> </li>
+              </ul>
+              <div class="tab-content tab-notification">
+                <div class="tab-pane active p-3 text-center">
+                  <h5 class="mt-4 pt-4 fw-500"> <span class="d-block fa-3x pb-4 text-muted"> <i class="ni ni-arrow-up text-gradient opacity-70"></i> </span> Select a tab above to activate <small class="mt-3 fs-b fw-400 text-muted"> This blank page message helps protect your privacy, or you can show the first message here automatically through <a href="#">settings page</a> </small> </h5>
+                </div>
+                <div class="tab-pane" id="tab-messages" role="tabpanel"> 1 </div>
+                <div class="tab-pane" id="tab-feeds" role="tabpanel"> 2 </div>
+                <div class="tab-pane" id="tab-events" role="tabpanel"> 3 </div>
+              </div>
+              <div class="py-2 px-3 bg-faded d-block rounded-bottom text-right border-faded border-bottom-0 border-right-0 border-left-0"> <a href="#" class="fs-xs fw-500 ml-auto">view all notifications</a> </div>
+            </div>
+          </div>
+          <!-- app user menu -->
+          <div> <a href="#" data-toggle="dropdown" title="deepak.juneja@indmoney.com" class="header-icon d-flex align-items-center justify-content-center ml-2"> <img src="img/demo/avatars/avatar-admin.png" class="profile-image rounded-circle" alt="Dr. Codex Lantern"> 
+            <!-- you can also add username next to the avatar with the codes below:
+									<span class="ml-1 mr-1 text-truncate text-truncate-header hidden-xs-down">Me</span>
+									<i class="ni ni-chevron-down hidden-xs-down"></i> --> 
+            </a>
+            <div class="dropdown-menu dropdown-menu-animated dropdown-lg">
+              <div class="dropdown-header bg-trans-gradient d-flex flex-row py-2 rounded-top">
+                <div class="d-flex flex-row align-items-center mt-1 mb-1 color-white"> <span class="mr-2"> <img src="img/demo/avatars/avatar-admin.png" class="rounded-circle profile-image" alt="Dr. Codex Lantern"> </span>
+                  <div class="info-card-text">
+                    <div class="fs-lg text-truncate text-truncate-lg">Deepak Juneja</div>
+                    <span class="text-truncate text-truncate-md opacity-80">deepak.juneja@indmoney.com</span> </div>
+                </div>
+              </div>
+              <div class="dropdown-divider m-0"></div>
+              <a href="#" class="dropdown-item" data-action="app-reset"> <span data-i18n="drpdwn.reset_layout">Edit Profile</span> </a> <a class="dropdown-item fw-500 pt-3 pb-3" href="#"> <span data-i18n="drpdwn.page-logout">Logout</span> </a> </div>
+          </div>
+        </div>
+      </header>
+      <!-- END Page Header --> 
+      <!-- BEGIN Page Content --> 
+      <!-- the #js-page-content id is needed for some plugins to initialize -->
+      <main id="js-page-content" role="main" class="page-content">
+        <ol class="breadcrumb page-breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+          <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+        </ol>
+        <div class="subheader">
+          <h1 class="subheader-title"> <i class='subheader-icon fal fa-chart-area'></i> FAQ's </h1>
+          <div class="subheader-block d-lg-flex align-items-center">
+            <div class="d-inline-flex flex-column justify-content-center mr-3"> <a href="" class="btn btn-primary waves-effect waves-themed" data-toggle="modal" data-target="#default-example-modal">Product with most earning</a> </div>
+          </div>
+          <div class="subheader-block d-lg-flex align-items-center">
+            <div class="d-inline-flex flex-column justify-content-center mr-3"> <span class="fw-300 fs-xs d-block"> <small>Earnings till date</small> </span> <span class="fw-500 fs-xl d-block color-primary-500"> ₹25,000 </span> </div>
+          </div>
+          <div class="subheader-block d-lg-flex align-items-center border-faded border-right-0 border-top-0 border-bottom-0 ml-3 pl-3">
+            <div class="d-inline-flex flex-column justify-content-center mr-3"> <span class="fw-300 fs-xs d-block"> <small>Current month's earnings</small> </span> <span class="fw-500 fs-xl d-block color-danger-500"> ₹1400 </span> </div>
+          </div>
+          <div class="subheader-block d-lg-flex align-items-center border-faded border-right-0 border-top-0 border-bottom-0 ml-3 pl-3">
+            <div class="d-inline-flex flex-column justify-content-center mr-3"> <span class="fw-300 fs-xs d-block"> <small>Users referred till date</small> </span> <span class="fw-500 fs-xl d-block color-fusion-800"> 40 </span> </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div id="panel-3" class="panel">
+              <div class="panel-container show">
+                <div class="panel-content">
+                  <div class="accordion accordion-clean" id="js_demo_accordion-1">
+                    <div class="card">
+                      <div class="card-header"> <a href="javascript:void(0);" class="card-title" data-toggle="collapse" data-target="#js_demo_accordion-1a" aria-expanded="true"> <span class="mr-2"> <span class="collapsed-reveal"> <i class="fal fa-minus fs-xl"></i> </span> <span class="collapsed-hidden"> <i class="fal fa-plus fs-xl"></i> </span> </span> 
+How do I refer customers to INDmoney? </a> </div>
+                      <div id="js_demo_accordion-1a" class="collapse show" data-parent="#js_demo_accordion-1">
+                        <div class="card-body"> Once you signup for the affiliate program, you can access your unique affiliate link from the dashboard. Share this link with your friends & family and ask them to join INDmoney from this link. Once the user user who has signed up from your referral link successfully deposits funds to their US stock account, you will get affiliate earning for the same.
+
+ </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header"> <a href="javascript:void(0);" class="card-title collapsed" data-toggle="collapse" data-target="#js_demo_accordion-1b" aria-expanded="false"> <span class="mr-2"> <span class="collapsed-reveal"> <i class="fal fa-minus fs-xl"></i> </span> <span class="collapsed-hidden"> <i class="fal fa-plus fs-xl"></i> </span> </span> What is a successful Referral? </a> </div>
+                      <div id="js_demo_accordion-1b" class="collapse" data-parent="#js_demo_accordion-1">
+                        <div class="card-body"> You get the affiliate reward once once the user who joined INDmoney from your link successfully makes a transaction on INDmoney. Example - Depositing funds to their US stock account, booking an FD, buying an insurance etc.
+
+ </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header"> <a href="javascript:void(0);" class="card-title collapsed" data-toggle="collapse" data-target="#js_demo_accordion-1c" aria-expanded="false"> <span class="mr-2"> <span class="collapsed-reveal"> <i class="fal fa-minus fs-xl"></i> </span> <span class="collapsed-hidden"> <i class="fal fa-plus fs-xl"></i> </span> </span>Is there an age limit to the INDmoney  Affiliate Program? </a> </div>
+                      <div id="js_demo_accordion-1c" class="collapse" data-parent="#js_demo_accordion-1">
+                        <div class="card-body"> Any individual who is 18 years or older can become and INDmoney Affiliate partner
+
+ </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- this overlay is activated only when mobile menu is triggered -->
+      <div class="page-content-overlay" data-action="toggle" data-class="mobile-nav-on"></div>
+      <!-- END Page Content --> 
+      <!-- BEGIN Page Footer -->
+      <footer class="page-footer" role="contentinfo">
+        <div class="d-flex align-items-center flex-1 text-muted"> <span class="hidden-md-down fw-700">2023 © SmartAdmin by&nbsp;<a href='https://www.indmoney.com/' class='text-primary fw-500' title='gotbootstrap.com' target='_blank'>INDmoney.com</a></span> </div>
+      </footer>
+      <!-- END Page Footer --> 
+      <!-- BEGIN Shortcuts -->
+      <div class="modal fade modal-backdrop-transparent" id="modal-shortcut" tabindex="-1" role="dialog" aria-labelledby="modal-shortcut" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-top modal-transparent" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <ul class="app-list w-auto h-auto p-0 text-left">
+                <li> <a href="intel_introduction.html" class="app-list-item text-white border-0 m-0">
+                  <div class="icon-stack"> <i class="base base-7 icon-stack-3x opacity-100 color-primary-500 "></i> <i class="base base-7 icon-stack-2x opacity-100 color-primary-300 "></i> <i class="fal fa-home icon-stack-1x opacity-100 color-white"></i> </div>
+                  <span class="app-list-name"> Home </span> </a> </li>
+                <li> <a href="page_inbox_general.html" class="app-list-item text-white border-0 m-0">
+                  <div class="icon-stack"> <i class="base base-7 icon-stack-3x opacity-100 color-success-500 "></i> <i class="base base-7 icon-stack-2x opacity-100 color-success-300 "></i> <i class="ni ni-envelope icon-stack-1x text-white"></i> </div>
+                  <span class="app-list-name"> Inbox </span> </a> </li>
+                <li> <a href="intel_introduction.html" class="app-list-item text-white border-0 m-0">
+                  <div class="icon-stack"> <i class="base base-7 icon-stack-2x opacity-100 color-primary-300 "></i> <i class="fal fa-plus icon-stack-1x opacity-100 color-white"></i> </div>
+                  <span class="app-list-name"> Add More </span> </a> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END Shortcuts --> 
+      <!-- BEGIN Color profile --> 
+      <!-- this area is hidden and will not be seen on screens or screen readers --> 
+      <!-- we use this only for CSS color refernce for JS stuff -->
+      <p id="js-color-profile" class="d-none"> <span class="color-primary-50"></span> <span class="color-primary-100"></span> <span class="color-primary-200"></span> <span class="color-primary-300"></span> <span class="color-primary-400"></span> <span class="color-primary-500"></span> <span class="color-primary-600"></span> <span class="color-primary-700"></span> <span class="color-primary-800"></span> <span class="color-primary-900"></span> <span class="color-info-50"></span> <span class="color-info-100"></span> <span class="color-info-200"></span> <span class="color-info-300"></span> <span class="color-info-400"></span> <span class="color-info-500"></span> <span class="color-info-600"></span> <span class="color-info-700"></span> <span class="color-info-800"></span> <span class="color-info-900"></span> <span class="color-danger-50"></span> <span class="color-danger-100"></span> <span class="color-danger-200"></span> <span class="color-danger-300"></span> <span class="color-danger-400"></span> <span class="color-danger-500"></span> <span class="color-danger-600"></span> <span class="color-danger-700"></span> <span class="color-danger-800"></span> <span class="color-danger-900"></span> <span class="color-warning-50"></span> <span class="color-warning-100"></span> <span class="color-warning-200"></span> <span class="color-warning-300"></span> <span class="color-warning-400"></span> <span class="color-warning-500"></span> <span class="color-warning-600"></span> <span class="color-warning-700"></span> <span class="color-warning-800"></span> <span class="color-warning-900"></span> <span class="color-success-50"></span> <span class="color-success-100"></span> <span class="color-success-200"></span> <span class="color-success-300"></span> <span class="color-success-400"></span> <span class="color-success-500"></span> <span class="color-success-600"></span> <span class="color-success-700"></span> <span class="color-success-800"></span> <span class="color-success-900"></span> <span class="color-fusion-50"></span> <span class="color-fusion-100"></span> <span class="color-fusion-200"></span> <span class="color-fusion-300"></span> <span class="color-fusion-400"></span> <span class="color-fusion-500"></span> <span class="color-fusion-600"></span> <span class="color-fusion-700"></span> <span class="color-fusion-800"></span> <span class="color-fusion-900"></span> </p>
+      <!-- END Color profile --> 
+    </div>
+  </div>
+</div>
+<!-- END Page Wrapper --> 
+<!-- BEGIN Quick Menu --> 
+<!-- to add more items, please make sure to change the variable '$menu-items: number;' in your _page-components-shortcut.scss --> 
+
+<!-- END Quick Menu --> 
+<!-- BEGIN Messenger --> 
+
+<!-- END Messenger --> 
+<!-- BEGIN Page Settings --> 
+
+<!-- END Page Settings --> 
+<!-- base vendor bundle: 
+			 DOC: if you remove pace.js from core please note on Internet Explorer some CSS animations may execute before a page is fully loaded, resulting 'jump' animations 
+						+ pace.js (recommended)
+						+ jquery.js (core)
+						+ jquery-ui-cust.js (core)
+						+ popper.js (core)
+						+ bootstrap.js (core)
+						+ slimscroll.js (extension)
+						+ app.navigation.js (core)
+						+ ba-throttle-debounce.js (core)
+						+ waves.js (extension)
+						+ smartpanels.js (extension)
+						+ src/../jquery-snippets.js (core) --> 
+<script src="js/vendors.bundle.js"></script> 
+<script src="js/app.bundle.js"></script> 
+<script type="text/javascript">
+            /* Activate smart panels */
+            $('#js-page-content').smartPanel();
+
+        </script> 
+<!-- The order of scripts is irrelevant. Please check out the plugin pages for more details about these plugins below: --> 
+<script src="js/dependency/moment/moment.js"></script> 
+<script src="js/miscellaneous/fullcalendar/fullcalendar.bundle.js"></script> 
+<script src="js/statistics/sparkline/sparkline.bundle.js"></script> 
+<script src="js/statistics/easypiechart/easypiechart.bundle.js"></script> 
+<script src="js/statistics/flot/flot.bundle.js"></script> 
+<script src="js/miscellaneous/jqvmap/jqvmap.bundle.js"></script> 
+<script src="js/statistics/chartist/chartist.js"></script> 
+<script>
+            /* line chart area */
+            var lineChartArea = function()
+            {
+                new Chartist.Line('#lineChartArea',
+                {
+                    labels: [1, 2, 3, 4, 5, 6, 7, 8],
+                    series: [
+                        [5, 9, 7, 8, 5, 3, 5, 4, ]
+                    ]
+                },
+                {
+                    low: 0,
+                    showArea: true,
+                    fullWidth: true
+                });
+            }
+            /* line chart area -- end */
+
+            /* line scattered chart */
+            var lineScattered = function()
+            {
+                var times = function(n)
+                {
+                    return Array.apply(null, new Array(n));
+                };
+
+                var data = times(52).map(Math.random).reduce(function(data, rnd, index)
+                {
+                    data.labels.push(index + 1);
+                    data.series.forEach(function(series)
+                    {
+                        series.push(Math.random() * 100)
+                    });
+
+                    return data;
+                },
+                {
+                    labels: [],
+                    series: times(4).map(function()
+                    {
+                        return new Array()
+                    })
+                });
+
+                var options = {
+                    showLine: false,
+                    axisX:
+                    {
+                        labelInterpolationFnc: function(value, index)
+                        {
+                            return index % 13 === 0 ? 'W' + value : null;
+                        }
+                    }
+                };
+
+                var responsiveOptions = [
+                    ['screen and (min-width: 640px)',
+                    {
+                        axisX:
+                        {
+                            labelInterpolationFnc: function(value, index)
+                            {
+                                return index % 4 === 0 ? 'W' + value : null;
+                            }
+                        }
+                    }]
+                ];
+
+                new Chartist.Line('#lineScattered', data, options, responsiveOptions);
+            }
+            /* line scattered chart -- end */
+
+            /* using events */
+            var usingEvents = function()
+            {
+                var chart = new Chartist.Line('#usingEvents',
+                {
+                    labels: [1, 2, 3, 4, 5],
+                    series: [
+                        [12, 9, 7, 8, 5]
+                    ]
+                });
+
+                // Listening for draw events that get emitted by the Chartist chart
+                chart.on('draw', function(data)
+                {
+                    // If the draw event was triggered from drawing a point on the line chart
+                    if (data.type === 'point')
+                    {
+                        // We are creating a new path SVG element that draws a triangle around the point coordinates
+                        var triangle = new Chartist.Svg('path',
+                        {
+                            d: ['M',
+                                data.x,
+                                data.y - 15,
+                                'L',
+                                data.x - 15,
+                                data.y + 8,
+                                'L',
+                                data.x + 15,
+                                data.y + 8,
+                                'z'
+                            ].join(' '),
+                            style: 'fill-opacity: 1'
+                        }, 'ct-area');
+
+                        // With data.element we get the Chartist SVG wrapper and we can replace the original point drawn by Chartist with our newly created triangle
+                        data.element.replace(triangle);
+                    }
+                });
+            }
+            /* using events -- end */
+
+            /* bipolar */
+            var bipolar = function()
+            {
+                new Chartist.Line('#bipolar',
+                {
+                    labels: [1, 2, 3, 4, 5, 6, 7, 8],
+                    series: [
+                        [1, 2, 3, 1, -2, 0, 1, 0],
+                        [-2, -1, -2, -1, -2.5, -1, -2, -1],
+                        [0, 0, 0, 1, 2, 2.5, 2, 1],
+                        [2.5, 2, 1, 0.5, 1, 0.5, -1, -2.5]
+                    ]
+                },
+                {
+                    high: 3,
+                    low: -3,
+                    showArea: true,
+                    showLine: false,
+                    showPoint: false,
+                    fullWidth: true,
+                    axisX:
+                    {
+                        showLabel: false,
+                        showGrid: false
+                    }
+                });
+            }
+            /* bipolar -- end */
+
+            /* smile animation */
+            var smileAnimation = function()
+            {
+                var chart = new Chartist.Line('#smileAnimation',
+                {
+                    labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+                    series: [
+                        [12, 9, 7, 8, 5, 4, 6, 2, 3, 3, 4, 6],
+                        [4, 5, 3, 7, 3, 5, 5, 3, 4, 4, 5, 5],
+                        [5, 3, 4, 5, 6, 3, 3, 4, 5, 6, 3, 4],
+                        [3, 4, 5, 6, 7, 6, 4, 5, 6, 7, 6, 3]
+                    ]
+                },
+                {
+                    low: 0
+                });
+
+                // Let's put a sequence number aside so we can use it in the event callbacks
+                var seq = 0,
+                    delays = 80,
+                    durations = 500;
+
+                // Once the chart is fully created we reset the sequence
+                chart.on('created', function()
+                {
+                    seq = 0;
+                });
+
+                // On each drawn element by Chartist we use the Chartist.Svg API to trigger SMIL animations
+                chart.on('draw', function(data)
+                {
+                    seq++;
+
+                    if (data.type === 'line')
+                    {
+                        // If the drawn element is a line we do a simple opacity fade in. This could also be achieved using CSS3 animations.
+                        data.element.animate(
+                        {
+                            opacity:
+                            {
+                                // The delay when we like to start the animation
+                                begin: seq * delays + 2000,
+                                // Duration of the animation
+                                dur: durations,
+                                // The value where the animation should start
+                                from: 0,
+                                // The value where it should end
+                                to: 1
+                            }
+                        });
+                    }
+                    else if (data.type === 'label' && data.axis === 'x')
+                    {
+                        data.element.animate(
+                        {
+                            y:
+                            {
+                                begin: seq * delays,
+                                dur: durations,
+                                from: data.y + 100,
+                                to: data.y,
+                                // We can specify an easing function from Chartist.Svg.Easing
+                                easing: 'easeOutQuart'
+                            }
+                        });
+                    }
+                    else if (data.type === 'label' && data.axis === 'y')
+                    {
+                        data.element.animate(
+                        {
+                            x:
+                            {
+                                begin: seq * delays,
+                                dur: durations,
+                                from: data.x - 100,
+                                to: data.x,
+                                easing: 'easeOutQuart'
+                            }
+                        });
+                    }
+                    else if (data.type === 'point')
+                    {
+                        data.element.animate(
+                        {
+                            x1:
+                            {
+                                begin: seq * delays,
+                                dur: durations,
+                                from: data.x - 10,
+                                to: data.x,
+                                easing: 'easeOutQuart'
+                            },
+                            x2:
+                            {
+                                begin: seq * delays,
+                                dur: durations,
+                                from: data.x - 10,
+                                to: data.x,
+                                easing: 'easeOutQuart'
+                            },
+                            opacity:
+                            {
+                                begin: seq * delays,
+                                dur: durations,
+                                from: 0,
+                                to: 1,
+                                easing: 'easeOutQuart'
+                            }
+                        });
+                    }
+                    else if (data.type === 'grid')
+                    {
+                        // Using data.axis we get x or y which we can use to construct our animation definition objects
+                        var pos1Animation = {
+                            begin: seq * delays,
+                            dur: durations,
+                            from: data[data.axis.units.pos + '1'] - 30,
+                            to: data[data.axis.units.pos + '1'],
+                            easing: 'easeOutQuart'
+                        };
+
+                        var pos2Animation = {
+                            begin: seq * delays,
+                            dur: durations,
+                            from: data[data.axis.units.pos + '2'] - 100,
+                            to: data[data.axis.units.pos + '2'],
+                            easing: 'easeOutQuart'
+                        };
+
+                        var animations = {};
+                        animations[data.axis.units.pos + '1'] = pos1Animation;
+                        animations[data.axis.units.pos + '2'] = pos2Animation;
+                        animations['opacity'] = {
+                            begin: seq * delays,
+                            dur: durations,
+                            from: 0,
+                            to: 1,
+                            easing: 'easeOutQuart'
+                        };
+
+                        data.element.animate(animations);
+                    }
+                });
+
+                // For the sake of the example we update the chart every time it's created with a delay of 10 seconds
+                chart.on('created', function()
+                {
+                    if (window.__exampleAnimateTimeout)
+                    {
+                        clearTimeout(window.__exampleAnimateTimeout);
+                        window.__exampleAnimateTimeout = null;
+                    }
+                    window.__exampleAnimateTimeout = setTimeout(chart.update.bind(chart), 12000);
+                });
+            }
+            /* smile animation -- end */
+
+            /* path animation */
+            var pathAnimation = function()
+            {
+                var chart = new Chartist.Line('#pathAnimation',
+                {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                    series: [
+                        [1, 5, 2, 5, 4, 3],
+                        [2, 3, 4, 8, 1, 2],
+                        [5, 4, 3, 2, 1, 0.5]
+                    ]
+                },
+                {
+                    low: 0,
+                    showArea: true,
+                    showPoint: false,
+                    fullWidth: true
+                });
+
+                chart.on('draw', function(data)
+                {
+                    if (data.type === 'line' || data.type === 'area')
+                    {
+                        data.element.animate(
+                        {
+                            d:
+                            {
+                                begin: 2000 * data.index,
+                                dur: 2000,
+                                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                                to: data.path.clone().stringify(),
+                                easing: Chartist.Svg.Easing.easeOutQuint
+                            }
+                        });
+                    }
+                });
+            }
+            /* path animation -- end */
+
+            /* line interpolation */
+            var lineInterpolation = function()
+            {
+                var chart = new Chartist.Line('#lineInterpolation',
+                {
+                    labels: [1, 2, 3, 4, 5],
+                    series: [
+                        [1, 5, 10, 0, 1],
+                        [10, 15, 0, 1, 2]
+                    ]
+                },
+                {
+                    // Remove this configuration to see that chart rendered with cardinal spline interpolation
+                    // Sometimes, on large jumps in data values, it's better to use simple smoothing.
+                    lineSmooth: Chartist.Interpolation.simple(
+                    {
+                        divisor: 2
+                    }),
+                    fullWidth: true,
+                    chartPadding:
+                    {
+                        right: 20
+                    },
+                    low: 0
+                });
+            }
+            /* line interpolation -- end */
+
+            /* series overrides */
+            var seriesOverrides = function()
+            {
+                var chart = new Chartist.Line('#seriesOverrides',
+                {
+                    labels: ['1', '2', '3', '4', '5', '6', '7', '8'],
+                    // Naming the series with the series object array notation
+                    series: [
+                    {
+                        name: 'series-1',
+                        data: [5, 2, -4, 2, 0, -2, 5, -3]
+                    },
+                    {
+                        name: 'series-2',
+                        data: [4, 3, 5, 3, 1, 3, 6, 4]
+                    },
+                    {
+                        name: 'series-3',
+                        data: [2, 4, 3, 1, 4, 5, 3, 2]
+                    }]
+                },
+                {
+                    fullWidth: true,
+                    // Within the series options you can use the series names
+                    // to specify configuration that will only be used for the
+                    // specific series.
+                    series:
+                    {
+                        'series-1':
+                        {
+                            lineSmooth: Chartist.Interpolation.step()
+                        },
+                        'series-2':
+                        {
+                            lineSmooth: Chartist.Interpolation.simple(),
+                            showArea: true
+                        },
+                        'series-3':
+                        {
+                            showPoint: false
+                        }
+                    }
+                }, [
+                    // You can even use responsive configuration overrides to
+                    // customize your series configuration even further!
+                    ['screen and (max-width: 320px)',
+                    {
+                        series:
+                        {
+                            'series-1':
+                            {
+                                lineSmooth: Chartist.Interpolation.none()
+                            },
+                            'series-2':
+                            {
+                                lineSmooth: Chartist.Interpolation.none(),
+                                showArea: false
+                            },
+                            'series-3':
+                            {
+                                lineSmooth: Chartist.Interpolation.none(),
+                                showPoint: true
+                            }
+                        }
+                    }]
+                ]);
+            }
+            /* series overrides -- end */
+
+            /* bar chart */
+            var barChart = function()
+            {
+                var data = {
+                    labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
+                    series: [
+                        [1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
+                    ]
+                };
+
+                var options = {
+                    high: 10,
+                    low: -10,
+                    axisX:
+                    {
+                        labelInterpolationFnc: function(value, index)
+                        {
+                            return index % 2 === 0 ? value : null;
+                        }
+                    }
+                };
+
+                new Chartist.Bar('#barChart', data, options);
+            }
+            /* bar chart end */
+
+            /* overlap bar mobile */
+            var overlapBarMobile = function()
+            {
+                var data = {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    series: [
+                        [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
+                        [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
+                    ]
+                };
+
+                var options = {
+                    seriesBarDistance: 10
+                };
+
+                var responsiveOptions = [
+                    ['screen and (max-width: 640px)',
+                    {
+                        seriesBarDistance: 5,
+                        axisX:
+                        {
+                            labelInterpolationFnc: function(value)
+                            {
+                                return value[0];
+                            }
+                        }
+                    }]
+                ];
+
+                new Chartist.Bar('#overlapBarMobile', data, options, responsiveOptions);
+            }
+            /* overlap bar mobile -- end */
+
+            /* peak circles */
+            var peakCircles = function()
+            {
+                // Create a simple bi-polar bar chart
+                var chart = new Chartist.Bar('#peakCircles',
+                {
+                    labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
+                    series: [
+                        [1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
+                    ]
+                },
+                {
+                    high: 10,
+                    low: -10,
+                    axisX:
+                    {
+                        labelInterpolationFnc: function(value, index)
+                        {
+                            return index % 2 === 0 ? value : null;
+                        }
+                    }
+                });
+
+                // Listen for draw events on the bar chart
+                chart.on('draw', function(data)
+                {
+                    // If this draw event is of type bar we can use the data to create additional content
+                    if (data.type === 'bar')
+                    {
+                        // We use the group element of the current series to append a simple circle with the bar peek coordinates and a circle radius that is depending on the value
+                        data.group.append(new Chartist.Svg('circle',
+                        {
+                            cx: data.x2,
+                            cy: data.y2,
+                            r: Math.abs(Chartist.getMultiValue(data.value)) * 2 + 5
+                        }, 'ct-slice-pie'));
+                    }
+                });
+            }
+            /* peak circles -- end */
+
+            /* multi line labels */
+            var multiLineLabels = function()
+            {
+                new Chartist.Bar('#multiLineLabels',
+                {
+                    labels: ['First quarter of the year', 'Second quarter of the year', 'Third quarter of the year', 'Fourth quarter of the year'],
+                    series: [
+                        [60000, 40000, 80000, 70000],
+                        [40000, 30000, 70000, 65000],
+                        [8000, 3000, 10000, 6000]
+                    ]
+                },
+                {
+                    seriesBarDistance: 10,
+                    axisX:
+                    {
+                        offset: 60
+                    },
+                    axisY:
+                    {
+                        offset: 80,
+                        labelInterpolationFnc: function(value)
+                        {
+                            return value + ' CHF'
+                        },
+                        scaleMinSpace: 15
+                    }
+                });
+            }
+            /* multi line labels -- end */
+
+            /* stacked bar */
+            var stackedBar = function()
+            {
+                new Chartist.Bar('#stackedBar',
+                {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    series: [
+                        [800000, 1200000, 1400000, 1300000],
+                        [200000, 400000, 500000, 300000],
+                        [100000, 200000, 400000, 600000]
+                    ]
+                },
+                {
+                    stackBars: true,
+                    axisY:
+                    {
+                        labelInterpolationFnc: function(value)
+                        {
+                            return (value / 1000) + 'k';
+                        }
+                    }
+                }).on('draw', function(data)
+                {
+                    if (data.type === 'bar')
+                    {
+                        data.element.attr(
+                        {
+                            style: 'stroke-width: 30px'
+                        });
+                    }
+                });
+            }
+            /* stacked bar -- end */
+
+            /* horizontal bar */
+            var horizontalBar = function()
+            {
+                new Chartist.Bar('#horizontalBar',
+                {
+                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                    series: [
+                        [5, 4, 3, 7, 5, 10, 3],
+                        [3, 2, 9, 5, 4, 6, 4]
+                    ]
+                },
+                {
+                    seriesBarDistance: 10,
+                    reverseData: true,
+                    horizontalBars: true,
+                    axisY:
+                    {
+                        offset: 70
+                    }
+                });
+            }
+            /* horizontal bar -- end */
+
+            /* extream responsive */
+            var extreamResponsive = function()
+            {
+                new Chartist.Bar('#extreamResponsive',
+                {
+                    labels: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
+                    series: [
+                        [5, 4, 3, 7],
+                        [3, 2, 9, 5],
+                        [1, 5, 8, 4],
+                        [2, 3, 4, 6],
+                        [4, 1, 2, 1]
+                    ]
+                },
+                {
+                    // Default mobile configuration
+                    stackBars: true,
+                    axisX:
+                    {
+                        labelInterpolationFnc: function(value)
+                        {
+                            return value.split(/\s+/).map(function(word)
+                            {
+                                return word[0];
+                            }).join('');
+                        }
+                    },
+                    axisY:
+                    {
+                        offset: 20
+                    }
+                }, [
+                    // Options override for media > 400px
+                    ['screen and (min-width: 400px)',
+                    {
+                        reverseData: true,
+                        horizontalBars: true,
+                        axisX:
+                        {
+                            labelInterpolationFnc: Chartist.noop
+                        },
+                        axisY:
+                        {
+                            offset: 60
+                        }
+                    }],
+                    // Options override for media > 800px
+                    ['screen and (min-width: 800px)',
+                    {
+                        stackBars: false,
+                        seriesBarDistance: 10
+                    }],
+                    // Options override for media > 1000px
+                    ['screen and (min-width: 1000px)',
+                    {
+                        reverseData: false,
+                        horizontalBars: false,
+                        seriesBarDistance: 15
+                    }]
+                ]);
+            }
+            /* extream responsive -- end */
+
+            /* distributed series */
+            var distributedSeries = function()
+            {
+                new Chartist.Bar('#distributedSeries',
+                {
+                    labels: ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
+                    series: [20, 60, 120, 200, 180, 20, 10]
+                },
+                {
+                    distributeSeries: true
+                });
+            }
+            /* distributed series -- end */
+
+            /* label palcement */
+            var labelPlacement = function()
+            {
+                new Chartist.Bar('#labelPlacement',
+                {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    series: [
+                        [5, 4, 3, 7, 5, 10, 3],
+                        [3, 2, 9, 5, 4, 6, 4]
+                    ]
+                },
+                {
+                    axisX:
+                    {
+                        // On the x-axis start means top and end means bottom
+                        position: 'start'
+                    },
+                    axisY:
+                    {
+                        // On the y-axis start means left and end means right
+                        position: 'end'
+                    }
+                });
+            }
+            /* label palcement -- end */
+
+            /* pie chart */
+            var pieChart = function()
+            {
+                var data = {
+                    series: [5, 3, 4]
+                };
+
+                var sum = function(a, b)
+                {
+                    return a + b
+                };
+
+                new Chartist.Pie('#pieChart', data,
+                {
+                    labelInterpolationFnc: function(value)
+                    {
+                        return Math.round(value / data.series.reduce(sum) * 100) + '%';
+                    }
+                });
+            }
+            /* pie chart -- end */
+
+            /* pie chart labels */
+            var pieChartLabels = function()
+            {
+                var data = {
+                    labels: ['Bananas', 'Apples', 'Grapes'],
+                    series: [20, 15, 40]
+                };
+
+                var options = {
+                    labelInterpolationFnc: function(value)
+                    {
+                        return value[0]
+                    }
+                };
+
+                var responsiveOptions = [
+                    ['screen and (min-width: 640px)',
+                    {
+                        chartPadding: 30,
+                        labelOffset: 100,
+                        labelDirection: 'explode',
+                        labelInterpolationFnc: function(value)
+                        {
+                            return value;
+                        }
+                    }],
+                    ['screen and (min-width: 1024px)',
+                    {
+                        labelOffset: 80,
+                        chartPadding: 20
+                    }]
+                ];
+
+                new Chartist.Pie('#pieChartLabels', data, options, responsiveOptions);
+            }
+            /* pie chart labels -- end */
+
+            /* guage chart */
+            var gaugeChart = function()
+            {
+                new Chartist.Pie('#gaugeChart',
+                {
+                    series: [20, 10, 30, 40]
+                },
+                {
+                    donut: true,
+                    donutWidth: 60,
+                    startAngle: 270,
+                    total: 200,
+                    showLabel: false
+                });
+            }
+            /* guage chart -- end */
+
+            /* donut fill */
+            var donutFill = function()
+            {
+                new Chartist.Pie('#donutFill',
+                {
+                    series: [20, 10, 30, 40]
+                },
+                {
+                    donut: true,
+                    donutWidth: 60,
+                    donutSolid: true,
+                    startAngle: 270,
+                    showLabel: true
+                });
+            }
+            /* donut fill -- end */
+
+            /* guage chart fill */
+            var gaugeChartFill = function()
+            {
+                new Chartist.Pie('#gaugeChartFill',
+                {
+                    series: [20, 10, 30, 40]
+                },
+                {
+                    donut: true,
+                    donutWidth: 60,
+                    donutSolid: true,
+                    startAngle: 270,
+                    total: 200,
+                    showLabel: true
+                });
+            }
+            /* guage chart fill -- end */
+
+            /* initilize all charts on DOM ready */
+            $(document).ready(function()
+            {
+                lineChartArea();
+                lineScattered();
+                usingEvents();
+                bipolar();
+                smileAnimation();
+                pathAnimation();
+                lineInterpolation();
+                seriesOverrides();
+                barChart();
+                overlapBarMobile();
+                peakCircles();
+                multiLineLabels();
+                stackedBar();
+                horizontalBar();
+                extreamResponsive();
+                distributedSeries();
+                labelPlacement();
+                pieChart();
+                pieChartLabels();
+                gaugeChart();
+                donutFill();
+                gaugeChartFill();
+            });
+
+        </script> 
+<script>
+            $(document).ready(function()
+            {
+                //$('#js-page-content').smartPanel(); 
+
+                //
+                //
+                var dataSetPie = [
+                {
+                    label: "Asia",
+                    data: 4119630000,
+                    color: color.primary._500
+                },
+                {
+                    label: "Latin America",
+                    data: 590950000,
+                    color: color.info._500
+                },
+                {
+                    label: "Africa",
+                    data: 1012960000,
+                    color: color.warning._500
+                },
+                {
+                    label: "Oceania",
+                    data: 95100000,
+                    color: color.danger._500
+                },
+                {
+                    label: "Europe",
+                    data: 727080000,
+                    color: color.success._500
+                },
+                {
+                    label: "North America",
+                    data: 344120000,
+                    color: color.fusion._400
+                }];
+
+
+                $.plot($("#flotPie"), dataSetPie,
+                {
+                    series:
+                    {
+                        pie:
+                        {
+                            innerRadius: 0.5,
+                            show: true,
+                            radius: 1,
+                            label:
+                            {
+                                show: true,
+                                radius: 2 / 3,
+                                threshold: 0.1
+                            }
+                        }
+                    },
+                    legend:
+                    {
+                        show: false
+                    }
+                });
+
+
+                $.plot('#flotBar1', [
+                {
+                    data: [
+                        [1, 0],
+                        [2, 0],
+                        [3, 0],
+                        [4, 1],
+                        [5, 3],
+                        [6, 3],
+                        [7, 10],
+                        [8, 11],
+                        [9, 10],
+                        [10, 9],
+                        [11, 12],
+                        [12, 8],
+                        [13, 10],
+                        [14, 6],
+                        [15, 3]
+                    ],
+                    bars:
+                    {
+                        show: true,
+                        lineWidth: 0,
+                        fillColor: color.fusion._50,
+                        barWidth: .3,
+                        order: 'left'
+                    }
+                },
+                {
+                    data: [
+                        [1, 0],
+                        [2, 0],
+                        [3, 1],
+                        [4, 2],
+                        [5, 2],
+                        [6, 5],
+                        [7, 8],
+                        [8, 12],
+                        [9, 10],
+                        [10, 11],
+                        [11, 3]
+                    ],
+                    bars:
+                    {
+                        show: true,
+                        lineWidth: 0,
+                        fillColor: color.success._500,
+                        barWidth: .3,
+                        align: 'right'
+                    }
+                }],
+                {
+                    grid:
+                    {
+                        borderWidth: 0,
+                    },
+                    yaxis:
+                    {
+                        min: 0,
+                        max: 15,
+                        tickColor: 'rgba(0,0,0,0.05)',
+                        ticks: [
+                            [0, ''],
+                            [5, '$5000'],
+                            [10, '$25000'],
+                            [15, '$45000']
+                        ],
+                        font:
+                        {
+                            color: '#444',
+                            size: 10
+                        }
+                    },
+                    xaxis:
+                    {
+                        mode: 'categories',
+                        tickColor: 'rgba(0,0,0,0.05)',
+                        ticks: [
+                            [0, '3am'],
+                            [1, '4am'],
+                            [2, '5am'],
+                            [3, '6am'],
+                            [4, '7am'],
+                            [5, '8am'],
+                            [6, '9am'],
+                            [7, '10am'],
+                            [8, '11am'],
+                            [9, '12nn'],
+                            [10, '1pm'],
+                            [11, '2pm'],
+                            [12, '3pm'],
+                            [13, '4pm'],
+                            [14, '5pm']
+                        ],
+                        font:
+                        {
+                            color: '#999',
+                            size: 9
+                        }
+                    }
+                });
+
+
+                /*
+                 * VECTOR MAP
+                 */
+
+                var data_array = {
+                    "af": "16.63",
+                    "al": "0",
+                    "dz": "158.97",
+                    "ao": "85.81",
+                    "ag": "1.1",
+                    "ar": "351.02",
+                    "am": "8.83",
+                    "au": "1219.72",
+                    "at": "366.26",
+                    "az": "52.17",
+                    "bs": "7.54",
+                    "bh": "21.73",
+                    "bd": "105.4",
+                    "bb": "3.96",
+                    "by": "52.89",
+                    "be": "461.33",
+                    "bz": "1.43",
+                    "bj": "6.49",
+                    "bt": "1.4",
+                    "bo": "19.18",
+                    "ba": "16.2",
+                    "bw": "12.5",
+                    "br": "2023.53",
+                    "bn": "11.96",
+                    "bg": "44.84",
+                    "bf": "8.67",
+                    "bi": "1.47",
+                    "kh": "11.36",
+                    "cm": "21.88",
+                    "ca": "1563.66",
+                    "cv": "1.57",
+                    "cf": "2.11",
+                    "td": "7.59",
+                    "cl": "199.18",
+                    "cn": "5745.13",
+                    "co": "283.11",
+                    "km": "0.56",
+                    "cd": "12.6",
+                    "cg": "11.88",
+                    "cr": "35.02",
+                    "ci": "22.38",
+                    "hr": "59.92",
+                    "cy": "22.75",
+                    "cz": "195.23",
+                    "dk": "304.56",
+                    "dj": "1.14",
+                    "dm": "0.38",
+                    "do": "50.87",
+                    "ec": "61.49",
+                    "eg": "216.83",
+                    "sv": "21.8",
+                    "gq": "14.55",
+                    "er": "2.25",
+                    "ee": "19.22",
+                    "et": "30.94",
+                    "fj": "3.15",
+                    "fi": "231.98",
+                    "fr": "2555.44",
+                    "ga": "12.56",
+                    "gm": "1.04",
+                    "ge": "11.23",
+                    "de": "3305.9",
+                    "gh": "18.06",
+                    "gr": "305.01",
+                    "gd": "0.65",
+                    "gt": "40.77",
+                    "gn": "4.34",
+                    "gw": "0.83",
+                    "gy": "2.2",
+                    "ht": "6.5",
+                    "hn": "15.34",
+                    "hk": "226.49",
+                    "hu": "132.28",
+                    "is": "0",
+                    "in": "1430.02",
+                    "id": "695.06",
+                    "ir": "337.9",
+                    "iq": "84.14",
+                    "ie": "204.14",
+                    "il": "201.25",
+                    "it": "2036.69",
+                    "jm": "13.74",
+                    "jp": "5390.9",
+                    "jo": "27.13",
+                    "kz": "129.76",
+                    "ke": "32.42",
+                    "ki": "0.15",
+                    "kw": "117.32",
+                    "kg": "4.44",
+                    "la": "6.34",
+                    "lv": "23.39",
+                    "lb": "39.15",
+                    "ls": "1.8",
+                    "lr": "0.98",
+                    "lt": "35.73",
+                    "lu": "52.43",
+                    "mk": "9.58",
+                    "mg": "8.33",
+                    "mw": "5.04",
+                    "my": "218.95",
+                    "mv": "1.43",
+                    "ml": "9.08",
+                    "mt": "7.8",
+                    "mr": "3.49",
+                    "mu": "9.43",
+                    "mx": "1004.04",
+                    "md": "5.36",
+                    "rw": "5.69",
+                    "ws": "0.55",
+                    "st": "0.19",
+                    "sa": "434.44",
+                    "sn": "12.66",
+                    "rs": "38.92",
+                    "sc": "0.92",
+                    "sl": "1.9",
+                    "sg": "217.38",
+                    "sk": "86.26",
+                    "si": "46.44",
+                    "sb": "0.67",
+                    "za": "354.41",
+                    "es": "1374.78",
+                    "lk": "48.24",
+                    "kn": "0.56",
+                    "lc": "1",
+                    "vc": "0.58",
+                    "sd": "65.93",
+                    "sr": "3.3",
+                    "sz": "3.17",
+                    "se": "444.59",
+                    "ch": "522.44",
+                    "sy": "59.63",
+                    "tw": "426.98",
+                    "tj": "5.58",
+                    "tz": "22.43",
+                    "th": "312.61",
+                    "tl": "0.62",
+                    "tg": "3.07",
+                    "to": "0.3",
+                    "tt": "21.2",
+                    "tn": "43.86",
+                    "tr": "729.05",
+                    "tm": "0",
+                    "ug": "17.12",
+                    "ua": "136.56",
+                    "ae": "239.65",
+                    "gb": "2258.57",
+                    "us": "14624.18",
+                    "uy": "40.71",
+                    "uz": "37.72",
+                    "vu": "0.72",
+                    "ve": "285.21",
+                    "vn": "101.99",
+                    "ye": "30.02",
+                    "zm": "15.69",
+                    "zw": "0"
+                };
+
+                $('#vector-map').vectorMap(
+                {
+                    map: 'world_en',
+                    backgroundColor: 'transparent',
+                    color: color.warning._50,
+                    borderOpacity: 0.5,
+                    borderWidth: 1,
+                    hoverColor: color.success._300,
+                    hoverOpacity: null,
+                    selectedColor: color.success._500,
+                    selectedRegions: ['US'],
+                    enableZoom: true,
+                    showTooltip: true,
+                    scaleColors: [color.primary._400, color.primary._50],
+                    values: data_array,
+                    normalizeFunction: 'polynomial',
+                    onRegionClick: function(element, code, region)
+                    {
+                        /*var message = 'You clicked "'
+						+ region
+						+ '" which has the code: '
+						+ code.toLowerCase();
+			 
+					console.log(message);*/
+
+                        var randomNumber = Math.floor(Math.random() * 10000000);
+                        var arrow;
+
+                        if (Math.random() >= 0.5 == true)
+                        {
+                            arrow = '<div class="ml-2 d-inline-flex"><i class="fal fa-caret-up text-success fs-xs"></i></div>'
+                        }
+                        else
+                        {
+                            arrow = '<div class="ml-2 d-inline-flex"><i class="fal fa-caret-down text-danger fs-xs"></i></div>'
+                        }
+
+                        $('.js-jqvmap-flag').attr('src', 'https://lipis.github.io/flag-icon-css/flags/4x3/' + code.toLowerCase() + '.svg');
+                        $('.js-jqvmap-country').html(region + ' - ' + '$' + randomNumber.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + arrow);
+                    }
+                });
+
+
+                /* TAB 1: UPDATING CHART */
+                var data = [],
+                    totalPoints = 200;
+                var getRandomData = function()
+                {
+                    if (data.length > 0)
+                        data = data.slice(1);
+
+                    // do a random walk
+                    while (data.length < totalPoints)
+                    {
+                        var prev = data.length > 0 ? data[data.length - 1] : 50;
+                        var y = prev + Math.random() * 10 - 5;
+                        if (y < 0)
+                            y = 0;
+                        if (y > 100)
+                            y = 100;
+                        data.push(y);
+                    }
+
+                    // zip the generated y values with the x values
+                    var res = [];
+                    for (var i = 0; i < data.length; ++i)
+                        res.push([i, data[i]])
+                    return res;
+                }
+                // setup control widget
+                var updateInterval = 1500;
+                $("#updating-chart").val(updateInterval).change(function()
+                {
+
+                    var v = $(this).val();
+                    if (v && !isNaN(+v))
+                    {
+                        updateInterval = +v;
+                        $(this).val("" + updateInterval);
+                    }
+
+                });
+                // setup plot
+                var options = {
+                    colors: [color.primary._700],
+                    series:
+                    {
+                        lines:
+                        {
+                            show: true,
+                            lineWidth: 0.5,
+                            fill: 0.9,
+                            fillColor:
+                            {
+                                colors: [
+                                {
+                                    opacity: 0.6
+                                },
+                                {
+                                    opacity: 0
+                                }]
+                            },
+                        },
+
+                        shadowSize: 0 // Drawing is faster without shadows
+                    },
+                    grid:
+                    {
+                        borderColor: 'rgba(0,0,0,0.05)',
+                        borderWidth: 1,
+                        labelMargin: 5
+                    },
+                    xaxis:
+                    {
+                        color: '#F0F0F0',
+                        tickColor: 'rgba(0,0,0,0.05)',
+                        font:
+                        {
+                            size: 10,
+                            color: '#999'
+                        }
+                    },
+                    yaxis:
+                    {
+                        min: 0,
+                        max: 100,
+                        color: '#F0F0F0',
+                        tickColor: 'rgba(0,0,0,0.05)',
+                        font:
+                        {
+                            size: 10,
+                            color: '#999'
+                        }
+                    }
+                };
+                var plot = $.plot($("#updating-chart"), [getRandomData()], options);
+                /* live switch */
+                $('input[type="checkbox"]#start_interval').click(function()
+                {
+                    if ($(this).prop('checked'))
+                    {
+                        $on = true;
+                        updateInterval = 1500;
+                        update();
+                    }
+                    else
+                    {
+                        clearInterval(updateInterval);
+                        $on = false;
+                    }
+                });
+                var update = function()
+                {
+                    if ($on == true)
+                    {
+                        plot.setData([getRandomData()]);
+                        plot.draw();
+                        setTimeout(update, updateInterval);
+
+                    }
+                    else
+                    {
+                        clearInterval(updateInterval)
+                    }
+
+                }
+
+
+
+                /*calendar */
+                var todayDate = moment().startOf('day');
+                var YM = todayDate.format('YYYY-MM');
+                var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
+                var TODAY = todayDate.format('YYYY-MM-DD');
+                var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
+
+
+                var calendarEl = document.getElementById('calendar');
+
+                var calendar = new FullCalendar.Calendar(calendarEl,
+                {
+                    plugins: ['dayGrid', 'list', 'timeGrid', 'interaction', 'bootstrap'],
+                    themeSystem: 'bootstrap',
+                    timeZone: 'UTC',
+                    //dateAlignment: "month", //week, month
+                    buttonText:
+                    {
+                        today: 'today',
+                        month: 'month',
+                        week: 'week',
+                        day: 'day',
+                        list: 'list'
+                    },
+                    eventTimeFormat:
+                    {
+                        hour: 'numeric',
+                        minute: '2-digit',
+                        meridiem: 'short'
+                    },
+                    navLinks: true,
+                    header:
+                    {
+                        left: 'title',
+                        center: '',
+                        right: 'today prev,next'
+                    },
+                    footer:
+                    {
+                        left: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+                        center: '',
+                        right: ''
+                    },
+                    editable: true,
+                    eventLimit: true, // allow "more" link when too many events
+                    events: [
+                    {
+                        title: 'All Day Event',
+                        start: YM + '-01',
+                        description: 'This is a test description', //this is currently bugged: https://github.com/fullcalendar/fullcalendar/issues/1795
+                        className: "border-warning bg-warning text-dark"
+                    },
+                    {
+                        title: 'Reporting',
+                        start: YM + '-14T13:30:00',
+                        end: YM + '-14',
+                        className: "bg-white border-primary text-primary"
+                    },
+                    {
+                        title: 'Surgery oncall',
+                        start: YM + '-02',
+                        end: YM + '-03',
+                        className: "bg-primary border-primary text-white"
+                    },
+                    {
+                        title: 'NextGen Expo 2019 - Product Release',
+                        start: YM + '-03',
+                        end: YM + '-05',
+                        className: "bg-info border-info text-white"
+                    },
+                    {
+                        title: 'Dinner',
+                        start: YM + '-12',
+                        end: YM + '-10'
+                    },
+                    {
+                        id: 999,
+                        title: 'Repeating Event',
+                        start: YM + '-09T16:00:00',
+                        className: "bg-danger border-danger text-white"
+                    },
+                    {
+                        id: 1000,
+                        title: 'Repeating Event',
+                        start: YM + '-16T16:00:00'
+                    },
+                    {
+                        title: 'Conference',
+                        start: YESTERDAY,
+                        end: TOMORROW,
+                        className: "bg-success border-success text-white"
+                    },
+                    {
+                        title: 'Meeting',
+                        start: TODAY + 'T10:30:00',
+                        end: TODAY + 'T12:30:00',
+                        className: "bg-primary text-white border-primary"
+                    },
+                    {
+                        title: 'Lunch',
+                        start: TODAY + 'T12:00:00',
+                        className: "bg-info border-info"
+                    },
+                    {
+                        title: 'Meeting',
+                        start: TODAY + 'T14:30:00',
+                        className: "bg-warning text-dark border-warning"
+                    },
+                    {
+                        title: 'Happy Hour',
+                        start: TODAY + 'T17:30:00',
+                        className: "bg-success border-success text-white"
+                    },
+                    {
+                        title: 'Dinner',
+                        start: TODAY + 'T20:00:00',
+                        className: "bg-danger border-danger text-white"
+                    },
+                    {
+                        title: 'Birthday Party',
+                        start: TOMORROW + 'T07:00:00',
+                        className: "bg-primary text-white border-primary text-white"
+                    },
+                    {
+                        title: 'Gotbootstrap Meeting',
+                        url: 'http://gotbootstrap.com/',
+                        start: YM + '-28',
+                        className: "bg-info border-info text-white"
+                    }],
+                    viewSkeletonRender: function()
+                    {
+                        $('.fc-toolbar .btn-default').addClass('btn-sm');
+                        $('.fc-header-toolbar h2').addClass('fs-md');
+                        $('#calendar').addClass('fc-reset-order')
+                    },
+
+                });
+
+                calendar.render();
+            });
+
+        </script>
+</body>
+<!-- END Body -->
+</html>
